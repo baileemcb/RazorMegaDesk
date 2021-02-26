@@ -1,0 +1,181 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace RazorMegaDesk.Models
+{
+
+    //public enum Shipping
+    //{
+    //    NoRush,
+    //    Rush3Day, 
+    //    Rush5Day, 
+    //    Rush7Day
+    //}
+
+    public class DeskQuote
+    {
+
+        public int DeskQuoteId { get; set; }
+
+        public int DeskId { get; set; }
+
+        public string CustomerName { get; set; }
+
+        public DateTime QuoteDate { get; set; }
+
+        public decimal QuotePrice { get; set; }
+
+        public int ShippingId { get; set; }
+
+
+
+        /* navigation properties */
+        public Desk Desk { get; set; }
+
+        // method
+        /*  public decimal GetQuotePrice(RazorMegaDesk.Data.RazorMegaDeskContext context)
+          {
+              // TEMP return change this later
+              decimal quoteTotal = 0;
+
+              // 1 add base price
+              quoteTotal = 200;
+
+              // 2 calculate area
+              var area = this.Desk.Width * this.Desk.Depth;
+
+              if (area > 1000)
+              {
+                  var extra = area - 1000;
+
+                  quoteTotal = quoteTotal + extra;
+              }
+
+
+              // 3 add on the drawers
+
+              var drawerPrice = this.Desk.NumberOfDrawers * 50;
+
+              quoteTotal = quoteTotal + drawerPrice;
+
+              // 4 add rush costs
+
+              //read in
+              decimal[,] rushOrderPrices;
+
+              rushOrderPrices = GetRushOrder();
+
+
+              decimal rushCost = (decimal)Shipping;
+              if (area < 1000)
+              {
+                  switch (rushCost)
+                  {
+                      case 0:
+                          break;
+                      case 1:
+                          quoteTotal = quoteTotal + rushOrderPrices[0, 0];
+                          break;
+                      case 2:
+                          quoteTotal = quoteTotal + rushOrderPrices[2, 1];
+                          break;
+                      case 3:
+                          quoteTotal = quoteTotal + rushOrderPrices[3, 1];
+                          break;
+                  }
+              }
+              else if (area < 2000)
+              {
+                  switch (rushCost)
+                  {
+                      case 0:
+                          break;
+                      case 1:
+                          quoteTotal = quoteTotal + rushOrderPrices[0, 1];
+                          break;
+                      case 2:
+                          quoteTotal = quoteTotal + rushOrderPrices[1, 1];
+                          break;
+                      case 3:
+                          quoteTotal = quoteTotal + rushOrderPrices[2, 1];
+                          break;
+                  }
+              }
+              else
+              {
+                  switch (rushCost)
+                  {
+                      case 0:
+                          break;
+                      case 1:
+                          quoteTotal = quoteTotal + rushOrderPrices[0, 2];
+                          break;
+                      case 2:
+                          quoteTotal = quoteTotal + rushOrderPrices[1, 2];
+                          break;
+                      case 3:
+                          quoteTotal = quoteTotal + rushOrderPrices[2, 2];
+                          break;
+                  }
+              }
+
+              //5 add surface material cost
+
+
+              if (this.Desk.SurfaceMaterial == SurfaceMaterial.Oak) 
+              {
+                  quoteTotal = quoteTotal + 200;
+              }
+
+              else if (this.Desk.SurfaceMaterial == SurfaceMaterial.Laminate)
+              {
+                  quoteTotal = quoteTotal + 100;
+              }
+
+              else if (this.Desk.SurfaceMaterial == SurfaceMaterial.Pine)
+              {
+                  quoteTotal = quoteTotal + 50;
+              }
+
+              else if (this.Desk.SurfaceMaterial == SurfaceMaterial.Rosewood)
+              {
+                  quoteTotal = quoteTotal + 300;
+              }
+
+              else if (this.Desk.SurfaceMaterial == SurfaceMaterial.Veneer)
+              {
+                  quoteTotal = quoteTotal + 125;
+              }
+
+
+              return quoteTotal;
+
+          }
+
+          public static decimal[,] GetRushOrder()
+          {
+              decimal[,] rushOrderPrices = new decimal[3, 3];
+
+              string file = @"rushOrderPrices.txt";
+
+              string[] lines = File.ReadAllLines(file);
+
+              int a = 0;
+              for (int x = 0; x < 3; x++)
+              {
+                  for (int y = 0; y < 3; y++)
+                  {
+                      rushOrderPrices[x, y] = decimal.Parse(lines[a]);
+                      a++;
+                  }
+              }
+
+              return rushOrderPrices; 
+          } */
+    }
+}
